@@ -109,6 +109,34 @@ module.exports = {
 				]
 			},
 			{
+				test: /\.less$/,
+				use: [
+					'style-loader',
+					MiniCssExtractPlugin.loader,
+					{
+						loader: "css-loader",
+						options: {
+							sourceMap: true
+						}
+					},
+					{
+						loader: "postcss-loader",
+						options: {
+							sourceMap: true,
+							config: {
+								path: `./js/postcss.config.js`
+							}
+						}
+					},
+					{
+						loader: "less-loader",
+						options: {
+							sourceMap: true
+						}
+					},
+				]
+			},
+			{
 				test: /\.css$/,
 				use: [
 					"style-loader",
@@ -133,6 +161,7 @@ module.exports = {
 		]
 	},
 	resolve: {
+		extensions: ['.js', '.vue', '.json'],
 		alias: {
 			'~': 'src',
 			'vue$': 'vue/dist/vue.js'
@@ -143,21 +172,24 @@ module.exports = {
 		new MiniCssExtractPlugin({
 			filename: `${PATHS.assets}css/[name].css?h=[hash]`,
 		}),
-		//		new HtmlWebpackPlugin({
-		//			template: `${PATHS.src}/index.html`,
-		//			filename: './index.html',
-		//		title: 'Webpack template O',
-		//		inject: false,
-		//		}),
+		new HtmlWebpackPlugin({
+			template: `${PATHS.src}/index.html`,
+			filename: './index.html',
+		title: 'Webpack template O',
+		inject: false,
+		}),
+
+		// PUG
 		// Automatic creation any html pages (Don't forget to RERUN dev server)
 		// see more: https://github.com/vedees/webpack-template/blob/master/README.md#create-another-html-files
 		// best way to create pages: https://github.com/vedees/webpack-template/blob/master/README.md#third-method-best
-		...PAGES.map(page => new HtmlWebpackPlugin({
-			inject: true,
-			template: `${PAGES_DIR}/${page}`, // .pug
-			//filename: `./${page}`, //.html
-			filename: `./${page.replace(/\.pug/, '.html')}`, //.pug to .html
-		})),
+		// ...PAGES.map(page => new HtmlWebpackPlugin({
+		// 	inject: true,
+		// 	template: `${PAGES_DIR}/${page}`, // .pug
+		// 	//filename: `./${page}`, //.html
+		// 	filename: `./${page.replace(/\.pug/, '.html')}`, //.pug to .html
+		// })),
+
 		new CopyWebpackPlugin([{
 				from: `${PATHS.src}/${PATHS.assets}img`,
 				to: `${PATHS.assets}img`

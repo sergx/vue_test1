@@ -15,9 +15,30 @@ import store  from './store/store.js';
 
 //import example from '~/example/Example'; // тильда ~  - это алиас к src, который указан в base.conf 
 
+//https://github.com/myliang/fish-ui/blob/master/examples/main.js
+import FishUI from 'fish-ui';
+
+//Vue.use(FishUI);
+
+
 Vue.component('example-component', require('./components/Example.vue').default)
+
+Vue.component('example-button', Vue.extend(FishUI.Button, {
+  methods:{
+    clickHandler (evt) {
+      console.log(12345);
+      this.$emit('click', evt)
+    }
+  }
+}));
+
 
 const app = new Vue({
   store: store,
-  el: '#app'
+  el: '#app',
+  methods:{
+    'exampleButtonClick': function(evt){
+      console.log(evt);
+    }
+  }
 });

@@ -18,8 +18,8 @@
 </head>
 <body>
   <div id="app">
-
     <example-component></example-component>
+    <example-button @click="exampleButtonClick">Нажать!</example-button>
   </div>
   <% for (var js in htmlWebpackPlugin.files.js) { %>
     <script src="<%= htmlWebpackPlugin.files.js[js] %>"></script>

@@ -45,8 +45,10 @@
   "author": "serg_x",
   "license": "MIT",
   "dependencies": {
-    "fish-ui": "^1.1.77",
+    "less": "^3.10.3",
+    "less-loader": "^5.0.0",
     "vue": "^2.6.10",
-    "vuex": "^3.1.1"
+    "vuex": "^3.1.1",
+    "fish-ui": "^1.1.77"
   }
 }
