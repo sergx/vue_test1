@@ -7,7 +7,7 @@ const devWebpackConfig = merge(baseWebpackConfig, {
   devtool: 'cheap-module-eval-source-map',
   devServer: {
     contentBase: baseWebpackConfig.externals.paths.dist,
-    port: 8081, // По-умолчанию 8080 https://youtu.be/QF3EcxymIcc?t=905
+    port: 7415, // По-умолчанию 8080 https://youtu.be/QF3EcxymIcc?t=905
     overlay:{ // Чтобы выводить ошибки компил¤ции в браузер
       warnings: true,
       errors: true,

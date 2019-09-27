@@ -21,6 +21,9 @@ const PAGES_DIR = `${PATHS.src}/pug/pages/`
 const PAGES = fs.readdirSync(PAGES_DIR).filter(fileName => fileName.endsWith('.pug'))
 
 module.exports = {
+	node: {
+		Buffer: false // 
+	},
 	externals: {
 		paths: PATHS
 	},
@@ -34,6 +37,14 @@ module.exports = {
 		//filename: '[name].js', //  Квадратные скобки означают, что берется файл с имеем точки входа https://youtu.be/JcKRovPhGo8?t=916
 		path: PATHS.dist, // папка назначения скомпилированных файлов https://nodejs.org/api/path.html#path_path_relative_from_to
 		publicPath: '/' // Папка, которая отображается, может отличаться от реальной папки
+	},
+	resolve: {
+		extensions: ['.js', '.vue', '.json'],
+		alias: {
+			'~': 'src',
+			'vue$': 'vue/dist/vue.js',
+			//'vue-router$': 'vue-router/dist/vue-router.js'
+		}
 	},
 	optimization: { // Разбиваем на отдельные файлы
 		splitChunks: {
@@ -160,13 +171,6 @@ module.exports = {
 			}
 		]
 	},
-	resolve: {
-		extensions: ['.js', '.vue', '.json'],
-		alias: {
-			'~': 'src',
-			'vue$': 'vue/dist/vue.js'
-		}
-	},
 	plugins: [
 		new VueLoaderPlugin(),
 		new MiniCssExtractPlugin({
@@ -175,8 +179,8 @@ module.exports = {
 		new HtmlWebpackPlugin({
 			template: `${PATHS.src}/index.html`,
 			filename: './index.html',
-		title: 'Webpack template O',
-		inject: false,
+			title: 'Webpack template O',
+			inject: false,
 		}),
 
 		// PUG
