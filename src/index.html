@@ -18,15 +18,17 @@
 </head>
 <body>
   <div id="app">
-    <!--<example-component></example-component>-->
-    <buefy-navbar></buefy-navbar>
-
-    <router-view></router-view>
-    <auth-modal></auth-modal>
-    <!--<example-button @click="exampleButtonClick">Нажать!</example-button>-->
+    <div class="container">
+      <!--<example-component></example-component>-->
+      <buefy-navbar></buefy-navbar>
+      <router-view></router-view> <!-- Для отображения того, что у нас меняется в router -->
+      <!--<auth-modal></auth-modal>-->
+      <!--<example-button @click="exampleButtonClick">Нажать!</example-button>-->
+    </div>  
   </div>
   <% for (var js in htmlWebpackPlugin.files.js) { %>
     <script src="<%= htmlWebpackPlugin.files.js[js] %>"></script>
   <% } %>
+  <script src="https://use.fontawesome.com/a304bad23c.js"></script>
 </body>
 </html>

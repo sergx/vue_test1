@@ -3,10 +3,10 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
-import example1 from './example1';
+import all from './store-all';
 
 export default new Vuex.Store({
   modules:{
-    example1: example1
+    all: all
   }
 });
