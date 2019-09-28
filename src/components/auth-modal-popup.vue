@@ -109,21 +109,21 @@ export default {
         data: {
           auth_signup: thisX.user_inputs
         }
-      })).then(function (response) {
-          if (typeof response.data !== 'object') {
-            console.log(response.data);
-            alert("Ошибка в консоли");
-            return;
-          }
-          if (response.data.success.length) {
-            thisX.result_message_class = "success";
-            thisX.$buefy.dialog.alert(response.data.success)
-            //window.location.reload();
-          } else if (response.data.error.length) {
-            thisX.result_message_class = "error";
-            thisX.$buefy.dialog.alert(response.data.error)
-          }
-        });
+        })).then(function (response) {
+            if (typeof response.data !== 'object') {
+              console.log(response.data);
+              alert("Ошибка в консоли");
+              return;
+            }
+            if (response.data.success.length) {
+              thisX.result_message_class = "success";
+              thisX.$buefy.dialog.alert(response.data.success)
+              //window.location.reload();
+            } else if (response.data.error.length) {
+              thisX.result_message_class = "error";
+              thisX.$buefy.dialog.alert(response.data.error)
+            }
+          });
       }
     },
     auth_signin: function () {
@@ -140,13 +140,9 @@ export default {
           return;
         }
         if (response.data.success.length) {
-          //thisX.result_message_class = "success";
-          //thisX.result_message = response.data.success;
           thisX.$buefy.dialog.alert(response.data.success)
           //window.location.reload();
         } else if (response.data.error.length) {
-          //thisX.result_message_class = "error";
-          //thisX.result_message = response.data.error;
           thisX.$buefy.dialog.alert(response.data.error)
         }
       });
