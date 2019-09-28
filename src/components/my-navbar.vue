@@ -65,6 +65,26 @@
       }
     },
     created() {
+      axios(Object.assign({}, this.$store.getters.getAxiosSettings, {
+        data: {
+          auth_attempt: true
+        }
+      })).then(function (response) {
+        console.log(response.data);
+        /*
+        if (typeof response.data !== 'object') {
+          console.log(response.data);
+          alert("Ошибка в консоли");
+          return;
+        }
+        if (response.data.success.length) {
+          thisX.$buefy.dialog.alert(response.data.success)
+          //window.location.reload();
+        } else if (response.data.error.length) {
+          thisX.$buefy.dialog.alert(response.data.error)
+        }
+        */
+      });
       //this.message = this.$store.getters.getMessage; // Берем из store
     },
     methods: {

@@ -64,7 +64,6 @@ export default {
   methods: {
     submit: function (e) {
       e.preventDefault();
-      console.log(this);
 
 
       //console.log(this.$store.getters.getAxiosSettings);
@@ -106,7 +105,7 @@ export default {
       */
       if (total_validate) {
         var thisX = this;
-        axios(Object.assign({}, this.$store.getters.getAxiosSettings, {
+        axios(Object.assign({}, this.$store.state.common.axios_settings, {
         data: {
           auth_signup: thisX.user_inputs
         }

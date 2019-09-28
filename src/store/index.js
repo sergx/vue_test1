@@ -3,10 +3,12 @@ import Vuex from 'vuex';
 
 Vue.use(Vuex);
 
-import all from './store-all';
+import storeAll from './store-all';
 
 export default new Vuex.Store({
+  message: "hello big W!", // Будет вызываться через this.$store.state.message
+  // То, что в модуле будет вызываться либо через геттер, либо через this.$store.state.MODULENAME.message
   modules:{
-    all: all
+    common: storeAll
   }
 });
